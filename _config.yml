@@ -1,0 +1,11 @@
+title: 古籍文集
+description: 赫蹏Heti中文古籍排版网站
+baseurl: ""
+url: "https://你的用户名.github.io"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
