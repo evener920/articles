@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <!-- 赫蹏 CSS -->
+  <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+  <style>
+    body {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      background: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1a1a1a;
+        color: #eee;
+      }
+    }
+    .back-link {
+      margin-bottom:2rem;
+      display:inline-block;
+    }
+  </style>
+</head>
+<body>
+  <a class="back-link" href="{{ site.baseurl }}/">← 返回文集目录</a>
+  <!-- heti 主容器，读取frontmatter的heti-class -->
+  <article class="heti {{ page.heti-class }}">
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+  </article>
+
+<!-- 赫蹏增强脚本：中西文间距、标点挤压 -->
+<script src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
+<script>
+const heti = new Heti('.heti');
+heti.autoSpacing();
+</script>
+</body>
+</html>
