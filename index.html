@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>bearwiki</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Docsify -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ site.title }}</title>
+<link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css">
+<style>
+body {
+  max-width:920px;
+  margin:0 auto;
+  padding:2rem 1rem;
+}
+@media (prefers-color-scheme: dark) {
+  body {background:#1a1a1a;color:#eee;}
+}
+ul {
+  list-style-type:none;
+  padding:0;
+}
+li {
+  padding:0.6rem 0;
+  border-bottom:1px solid #ddd;
+}
+a {
+  text-decoration:none;
+}
+</style>
 </head>
 <body>
-  <div id="app"></div>
+<article class="heti">
+  <h1>古籍文集目录</h1>
+  <p>基于赫蹏(Heti)中文古籍排版，所有文稿采用Markdown编写。</p>
+  <ul>
+    {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="heti-meta heti-small">｜{{ post.date | date: "%Y年%m月%d日" }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</article>
 
-  <script>
-    window.$docsify = {
-      name: 'bearwiki',
-      repo: 'https://github.com/evener920/bearwiki',
-      loadSidebar: true,
-      subMaxLevel: 3,
-      search: 'auto'
-    }
-  </script>
-
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//unpkg.com/heti/umd/heti-addon.min.js"></script>
+<script>
+const heti = new Heti('.heti');
+heti.autoSpacing();
+</script>
 </body>
 </html>
